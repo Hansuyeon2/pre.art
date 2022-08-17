@@ -16,6 +16,7 @@ def board_list(request) :
     boards      = pagenator.get_page(page)
     return render(request, 'board/board_list.html', {"boards" : boards})
 
+
 def board_write(request):
 
     
@@ -54,10 +55,4 @@ def board_detail(request, pk):
     return render(request, 'board/board_detail.html', {'board':board,'comments':all_comments})
 
 
-def create_comment(request, board_id):
-   new_comment = Comment()
-   new_comment.writer = request.user
-   new_comment.content = request.POST['content']
-   new_comment.board = get_object_or_404(Board, pk =board_id)
-   new_comment.save() 
-   return redirect('board:board_detail', board_id)
+

@@ -23,6 +23,9 @@ def login(request):
     elif request.method == 'GET':
         return render(request, 'accounts/login.html')
 
+def logout(request):
+    auth.logout(request)
+    return redirect('/')
 
 def mypage(request):
     user = request.user
@@ -64,6 +67,7 @@ def updateInfo(request):
     update_member.email = request.POST['email']
     update_member.save()
     return redirect('accounts:mypage')
+
 
 # 마이 페이지 - 결제 관리
 def mypage_cash(request):
